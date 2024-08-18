@@ -1,6 +1,6 @@
-import { app, BrowserWindow } from "electron";
+import { app, BrowserWindow, ipcMain } from "electron";
 import path from "path";
-import { db } from "./utils/db";
+import { db, dbMutate, dbQuery } from "./utils/db";
 import { seed } from "./utils/seed";
 
 // Handle creating/removing shortcuts on Windows when installing/uninstalling.
@@ -60,3 +60,23 @@ app.on("activate", () => {
 
 // In this file you can include the rest of your app's specific main process
 // code. You can also put them in separate files and import them here.
+
+ipcMain.handle("query", async (event, query, ...params) => {
+  try {
+    const data = dbQuery(query, ...params);
+    return data;
+  } catch (error) {
+    console.error("Error fetching data:", error);
+    return { error: error.message };
+  }
+});
+
+ipcMain.handle("mutate", async (event, query, ...params) => {
+  try {
+    const data = dbMutate(query, ...params);
+    return data;
+  } catch (error) {
+    console.error("Error fetching data:", error);
+    return { error: error.message };
+  }
+});
