@@ -1,13 +1,14 @@
 import { Link, useLocation } from "react-router-dom";
 import ROUTES from "@/utils/routes";
+import { ModeToggle } from "@/system/mode-toggle";
 
 import { cn } from "@/lib/utils";
 
 const Sidebar: React.FC = () => {
   const { pathname } = useLocation();
   return (
-    <div className="border-r">
-      <nav className="grid gap-4 text-sm text-muted-foreground pr-4">
+    <div className="flex flex-col border-r pr-4">
+      <nav className="grid gap-4 text-sm text-muted-foreground">
         <Link
           to={ROUTES.base}
           className={cn({
@@ -31,6 +32,9 @@ const Sidebar: React.FC = () => {
           Settings
         </Link>
       </nav>
+      <div className="mb-0 mt-auto">
+        <ModeToggle />
+      </div>
     </div>
   );
 };
