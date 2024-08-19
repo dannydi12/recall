@@ -3,6 +3,7 @@ import Providers from "../src/Providers";
 import App from "./App";
 import ROUTES from "./utils/routes";
 import Settings from "./views/Settings";
+import Bookmarks from "./views/Bookmarks";
 
 const router = createBrowserRouter([
   {
@@ -11,6 +12,7 @@ const router = createBrowserRouter([
     children: [
       { path: ROUTES.base, element: <App /> },
       { path: ROUTES.settings, element: <Settings /> },
+      { path: ROUTES.bookmarks, element: <Bookmarks /> },
     ],
   },
 ]);
