@@ -6,6 +6,8 @@ import { contextBridge, ipcRenderer } from "electron";
 export const backend = {
   query: async (query: string, ...params: any): Promise<string> =>
     await ipcRenderer.invoke("query", query, ...params),
+  list: async (query: string, ...params: any): Promise<string> =>
+    await ipcRenderer.invoke("list", query, ...params),
   mutate: async (query: string, ...params: any): Promise<string> =>
     await await ipcRenderer.invoke("mutate", query, ...params),
   import: async (path: string): Promise<string> =>

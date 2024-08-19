@@ -1,13 +1,13 @@
 import React, { useEffect } from "react";
 import { Button } from "@/system/ui/button";
-import { query } from "./utils/network";
 import SidebarLayout from "./layouts/SidebarLayout";
+import { getBookmarkTree } from "./utils/allBookmarks";
 
 const App: React.FC = () => {
   useEffect(() => {
     const a = async () => {
-      const res = await query("SELECT * FROM bookmarks WHERE id = ?", 1);
-      console.log(res, "res");
+      const nestedData = await getBookmarkTree();
+      console.log(nestedData);
     };
     a();
   }, []);
