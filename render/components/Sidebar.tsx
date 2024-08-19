@@ -1,36 +1,20 @@
-import { Link, useLocation } from "react-router-dom";
 import ROUTES from "@/utils/routes";
 import { ModeToggle } from "@/system/mode-toggle";
+import { Bookmark, LayoutDashboard, Wrench } from "lucide-react";
+import { FC } from "react";
+import SidebarLink from "./SidebarLink";
 
-import { cn } from "@/lib/utils";
-
-const Sidebar: React.FC = () => {
-  const { pathname } = useLocation();
+const Sidebar: FC = () => {
   return (
-    <div className="flex flex-col border-r pr-4">
+    <div className="flex flex-col border-r p-4">
       <nav className="grid gap-4 text-sm text-muted-foreground">
-        <Link
+        <SidebarLink
+          label="Dashboard"
           to={ROUTES.base}
-          className={cn({
-            "font-semibold text-primary": pathname === ROUTES.base,
-          })}
-        >
-          Dashboard
-        </Link>
-        <Link
-          className={cn({ "font-semibold text-primary": pathname === "#" })}
-          to="#"
-        >
-          Bookmarks
-        </Link>
-        <Link
-          className={cn({
-            "font-semibold text-primary": pathname === ROUTES.settings,
-          })}
-          to={ROUTES.settings}
-        >
-          Settings
-        </Link>
+          Icon={LayoutDashboard}
+        />
+        <SidebarLink label="Bookmarks" to={ROUTES.bookmarks} Icon={Bookmark} />
+        <SidebarLink label="Settings" to={ROUTES.settings} Icon={Wrench} />
       </nav>
       <div className="mb-0 mt-auto">
         <ModeToggle />

@@ -1,13 +1,22 @@
 import Sidebar from "@/components/Sidebar";
-import { FC } from "react";
-import { Outlet } from "react-router-dom";
+import { FC, ReactNode } from "react";
 
-const SidebarLayout: FC = () => {
+type Props = {
+  title: string;
+  children: ReactNode;
+};
+
+const SidebarLayout: FC<Props> = ({ title, children }) => {
   return (
-    <div className="grid h-[100vh] grid-cols-[180px_1fr] p-4">
-      <Sidebar />
-      <div className="p-4 pt-0">
-        <Outlet />
+    <div>
+      <div className="grid h-[100vh] grid-cols-[180px_1fr]">
+        <Sidebar />
+        <div className="p-4 pt-0">
+          <div>
+            <h1>{title}</h1>
+          </div>
+          {children}
+        </div>
       </div>
     </div>
   );
