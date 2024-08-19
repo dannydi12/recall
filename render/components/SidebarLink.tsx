@@ -19,7 +19,7 @@ const SidebarLink: FC<Props> = ({ to, label, Icon }) => {
     <Link
       className={cn(
         isActive && "font-semibold text-primary",
-        "flex items-center gap-2",
+        "flex items-center gap-3",
       )}
       to={to}
     >
