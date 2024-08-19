@@ -1,7 +1,8 @@
+import SidebarLayout from "@/layouts/SidebarLayout";
 import { FC } from "react";
 
 const Settings: FC = () => {
-  return <>Settings</>;
+  return <SidebarLayout title="Settings">Settings</SidebarLayout>;
 };
 
 export default Settings;

@@ -1,6 +1,7 @@
 import React, { useEffect } from "react";
 import { Button } from "@/system/ui/button";
 import { query } from "./utils/network";
+import SidebarLayout from "./layouts/SidebarLayout";
 
 const App: React.FC = () => {
   useEffect(() => {
@@ -12,10 +13,10 @@ const App: React.FC = () => {
   }, []);
 
   return (
-    <>
+    <SidebarLayout title="dashboard">
       <h1>Hello, Electron with React?</h1>
       <Button>Hey</Button>
-    </>
+    </SidebarLayout>
   );
 };
 
