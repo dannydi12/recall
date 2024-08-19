@@ -10,7 +10,7 @@ type Props = {
 const SidebarLayout: FC<Props> = ({ title, children }) => {
   return (
     <div>
-      <div className="grid h-[100vh] grid-cols-[180px_1fr]">
+      <div className="grid h-[100vh] grid-cols-[210px_1fr]">
         <Sidebar />
         <div className="pt-0">
           <div className="border-b px-8 py-4 dark:bg-slate-900">
