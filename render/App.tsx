@@ -13,7 +13,7 @@ const App: React.FC = () => {
   }, []);
 
   return (
-    <SidebarLayout title="dashboard">
+    <SidebarLayout title="Dashboard">
       <h1>Hello, Electron with React?</h1>
       <Button>Hey</Button>
     </SidebarLayout>
