@@ -1,4 +1,4 @@
-import { app, BrowserWindow, ipcMain } from "electron";
+import { app, BrowserWindow, ipcMain, session } from "electron";
 import path from "path";
 import { db, dbList, dbMutate, dbQuery } from "./utils/db";
 import { seed } from "./utils/seed";
@@ -43,6 +43,17 @@ app.on("ready", async () => {
   const row = db.prepare("SELECT * FROM bookmarks").get();
   console.log(row);
   createWindow();
+
+  session.defaultSession.webRequest.onHeadersReceived((details, callback) => {
+    callback({
+      responseHeaders: {
+        ...details.responseHeaders,
+        "Content-Security-Policy": [
+          "script-src 'self' 'unsafe-inline' http://localhost:5173",
+        ],
+      },
+    });
+  });
 });
 
 // Quit when all windows are closed, except on macOS. There, it's common
