@@ -2,6 +2,8 @@ import { app, BrowserWindow, ipcMain } from "electron";
 import path from "path";
 import { db, dbMutate, dbQuery } from "./utils/db";
 import { seed } from "./utils/seed";
+import { convertBookmarksToJSON } from "./utils/convertBookmarksToJson";
+import fs from "fs";
 
 // Handle creating/removing shortcuts on Windows when installing/uninstalling.
 if (require("electron-squirrel-startup")) {
@@ -82,4 +84,9 @@ ipcMain.handle("mutate", async (event, query, ...params) => {
     console.error("Error fetching data:", error);
     return { error: error.message };
   }
+});
+
+ipcMain.handle("import", async (event, path) => {
+  const bookmarksJSON = convertBookmarksToJSON(path);
+  fs.writeFileSync("import.json", JSON.stringify(bookmarksJSON, null, 2));
 });

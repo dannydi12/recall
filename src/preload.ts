@@ -8,6 +8,8 @@ export const backend = {
     await ipcRenderer.invoke("query", query, ...params),
   mutate: async (query: string, ...params: any): Promise<string> =>
     await await ipcRenderer.invoke("mutate", query, ...params),
+  import: async (path: string): Promise<string> =>
+    await await ipcRenderer.invoke("import", path),
 };
 
 contextBridge.exposeInMainWorld("backend", backend);
