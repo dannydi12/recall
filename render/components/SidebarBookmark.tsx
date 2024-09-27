@@ -1,6 +1,6 @@
 import { cn } from "@/lib/utils";
 import { Bookmark } from "@/utils/allBookmarks";
-import { Wrench } from "lucide-react";
+import { Link } from "lucide-react";
 import { FC } from "react";
 
 type Props = {
@@ -10,18 +10,22 @@ type Props = {
 const SidebarBookmark: FC<Props> = ({ item }) => {
   const isActive = false;
   return (
-    <div
+    <button
       className={cn(
         isActive && "font-semibold text-primary",
-        "flex items-center gap-3",
+        "flex items-center gap-2",
       )}
+      onClick={() => openExternalLink(item.link)}
     >
-      <Wrench
-        className={isActive ? "fill-primary" : "fill-muted-foreground"}
+      <Link
+        className={cn(
+          isActive ? "stroke-primary" : "stroke-muted-foreground",
+          "min-w-4",
+        )}
         size={16}
       />
       <p className="truncate">{item.name}</p>
-    </div>
+    </button>
   );
 };
 

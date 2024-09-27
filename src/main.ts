@@ -1,4 +1,4 @@
-import { app, BrowserWindow, ipcMain, session } from "electron";
+import { app, BrowserWindow, ipcMain, session, shell } from "electron";
 import path from "path";
 import { db, dbList, dbMutate, dbQuery } from "./utils/db";
 import { seed } from "./utils/seed";
@@ -112,4 +112,8 @@ ipcMain.handle("mutate", async (event, query, ...params) => {
 ipcMain.handle("import", async (event, path) => {
   const bookmarksJSON = convertBookmarksToJSON(path);
   await insertBookmarks(bookmarksJSON);
+});
+
+ipcMain.handle("open-external-link", async (event, url) => {
+  await shell.openExternal(url);
 });

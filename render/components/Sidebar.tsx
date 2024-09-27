@@ -10,7 +10,7 @@ const Sidebar: FC = () => {
   const { bookmarks } = useBookmarkTree();
 
   return (
-    <div className="flex flex-col border-r p-4">
+    <div className="flex max-h-[100vh] flex-col overflow-y-auto border-r p-4">
       <nav className="grid gap-4 text-sm text-muted-foreground">
         <SidebarLink
           label="Dashboard"

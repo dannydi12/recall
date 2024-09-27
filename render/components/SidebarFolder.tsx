@@ -16,11 +16,15 @@ const SidebarFolder: FC<Props> = ({ item }) => {
       <div
         className={cn(
           isActive && "font-semibold text-primary",
-          "flex items-center gap-3",
+          "flex cursor-pointer items-center gap-2",
         )}
+        onClick={() => setIsOpen(!isOpen)}
       >
         <FolderIcon
-          className={isActive ? "fill-primary" : "fill-muted-foreground"}
+          className={cn(
+            isActive ? "stroke-primary" : "stroke-muted-foreground",
+            "min-w-4",
+          )}
           size={16}
         />
         <p className="truncate">{item.name}</p>

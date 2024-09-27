@@ -23,7 +23,8 @@ declare global {
     VITE_NAME: `${string}_VITE_NAME`;
   }
 
-  declare const backend: typeof import("./preload").backend;
+  declare const backend: typeof import("./src/preload").backend;
+  declare const openExternalLink: typeof import("./src/preload").openExternalLink;
 }
 
 declare module "vite" {

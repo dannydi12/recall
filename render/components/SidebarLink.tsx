@@ -24,10 +24,13 @@ const SidebarLink: FC<Props> = ({ to, label, Icon }) => {
       to={to}
     >
       <Icon
-        className={isActive ? "fill-primary" : "fill-muted-foreground"}
+        className={cn(
+          "min-w-4",
+          isActive ? "min-w-4 fill-primary" : "fill-muted-foreground",
+        )}
         size={16}
       />
-      {label}
+      <p className="truncate">{label}</p>
     </Link>
   );
 };

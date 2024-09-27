@@ -14,4 +14,9 @@ export const backend = {
     await await ipcRenderer.invoke("import", path),
 };
 
+export const openExternalLink = (url: string) =>
+  ipcRenderer.invoke("open-external-link", url);
+
+contextBridge.exposeInMainWorld("openExternalLink", openExternalLink);
+
 contextBridge.exposeInMainWorld("backend", backend);
