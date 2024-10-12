@@ -27,12 +27,10 @@ export interface Bookmark {
 
 export const getBookmarkTree = async () => {
   // Fetch all folders
-  const folders = (await backend.list(`SELECT * FROM folders`)) as Folder[];
+  const folders = await backend.list<Folder>(`SELECT * FROM folders`);
 
   // Fetch all bookmarks
-  const bookmarks = (await backend.list(
-    `SELECT * FROM bookmarks`,
-  )) as Bookmark[];
+  const bookmarks = await backend.list<Bookmark>(`SELECT * FROM bookmarks`);
 
   const buildTree = (
     folders: Folder[],
